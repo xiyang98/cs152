@@ -73,7 +73,7 @@ conda create --name cs121 -y python=2.7
 # Make activation automatic on login
 echo 'source activate cs152' >> ~/.bashrc
 # Activate now
-source activate cs152
+source activate cs121
 
 # Install ipywidgets using conda.  That'll automatically enable the extensions.
 conda install -c conda-forge ipywidgets -y
