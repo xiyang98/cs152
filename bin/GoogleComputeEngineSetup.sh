@@ -68,7 +68,7 @@ popd
 
 # Create our Conda environment named cs152.  That's where we'll install all
 # our stuff.
-conda create --name cs152 -y python=3.6
+conda create --name cs121 -y python=2.7
 
 # Make activation automatic on login
 echo 'source activate cs152' >> ~/.bashrc
@@ -100,28 +100,9 @@ c.NotebookApp.open_browser = False
 c.NotebookApp.allow_remote_access = True
 HERE_DOC
 
-
+# install caffe
+conda install -c conda-forge caffe -y
 conda install -c conda-forge jupyterlab -y
-
-# Clone our github repository.
-if [[ ! -d cs152 ]]; then
-cd ..
-  git clone https://github.com/nrhodes/cs152.git
-fi
-
-# Download the dogs/cats data. We don't download from Kaggle because this
-# form of the data has been massaged (broken into train/valid, separated dogs/cats into
-# different directories).
-if [[ ! -d data ]]; then
-  mkdir data
-fi
-pushd data
-if [[ ! -d dogscats ]]; then
-  curl http://files.fast.ai/data/dogscats.zip --output dogscats.zip
-  unzip -qq dogscats.zip
-  rm dogscats.zip
-fi
-popd
 
 echo "Finished install at `date`"
 
